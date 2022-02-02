@@ -24,7 +24,6 @@
             // 또한 return된 값은 원본을 바꾸는 것이 아니라,
             // 이전에 있었던 값을 복제한 결과를 return한 값으로 이용해야만 redux를 충분히 활용할 수 있다.
             function reducer(state, action){
-                console.log(state, action);
                 if(state === undefined){ // 기존 state 값이 정의되지 않은 상태. 초기회를 위해 최초로 실행되는 reducer
                     return {color:'yellow'}
                 }
@@ -37,9 +36,14 @@
                 // Object.assign({},{name:'eee'},{city:'seoul'});   -> 첫번째 파라미터를 리턴한다.
                 // 첫번째 파라미터에 두 번째 파라미터를, 그리고 세번째 파라미터를 복사하여 첫번째 파라미터를 리턴한다
                 // >> {name:'eee', city:'seoul'}
+
+                console.log(action.type, action, state, newState);
                 return newState;
             }
-            var store = Redux.createStore(reducer);
+            var store = Redux.createStore(
+                reducer,
+                window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+                );
             console.log(store.getState())
             function red(){
                 var state = store.getState();
