@@ -2,24 +2,19 @@ import './App.css';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider, useSelector, useDispatch, connect } from 'react-redux';
-// Provider: 컴포넌트. state들을 제공힐 컴포넌트들을 <Provider> 컴포넌트로 감싸주면 됨.
-//            props로 반드시 store를 갖고 있어야 함
-// useSelector: 어떤 state 값을 쓰고 싶은지 선택.
-//            const number = useSelector((state)=> state.number);
-// useDispatch: state 값 변경할 때 사용
-//            const dispatch = useDispatch();
-//            onClick={()=>{dispatch({type:'PLUS'})}}
-// connect. 사용하기 어려워서 안 씀 재사용할 때만 사용
+
 
 function reducer(currentState, action){
   if(currentState === undefined){
     return{
-      number:1
+      number:1,
+      color:'white'
     }
   }
   const newState = {...currentState}
   if(action.type === 'PLUS'){
     newState.number++;
+    newState.color = action.color
   }
   return newState
 }
@@ -67,9 +62,10 @@ function Left3(props){
   // }
   // const number = useSelector(f);
   const number = useSelector((state)=> state.number);
+  const color = useSelector((state)=> state.color);
   return(
     <div>
-      <h1>Left3: {number}</h1>
+      <h1>Left3: {number}  / {color}</h1>
     </div>
   )
 }
@@ -98,7 +94,7 @@ function Right3(props){
     <div>
       <h1>Right3</h1>
       <input type="button" value="+" onClick={()=>{
-        dispatch({type:'PLUS'})
+        dispatch({type:'PLUS', color:'blue'})
       }}
       ></input>
     </div>
