@@ -1,0 +1,48 @@
+<script>
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const result = words.filter(word => word.length > 6);
+
+// 아래 callback 함수는 위의 필터함수와 같다
+function callback(element){
+    if (element.length > 6){
+        return true;
+    } else {
+        return false;
+    }
+}
+newWords = words.filter(callback)
+
+// if문을 줄였다
+function callback(element){
+    return element.length > 6;
+ }
+ newWords = words.filter(callback)
+
+// 익명함수를 파라미터에 직접 입력
+newWords = words.filter(function (element){
+   return element.length > 6;
+})
+
+// 익명함수를 화살표 함수로 변경
+newWords = words.filter((element)=>{
+   return element.length > 6;
+})
+
+// 화살표 함수를 줄임. 맨 위의 필터 함수와 같아짐
+newWords = words.filter(element=>element.length > 6);
+
+//=============================================
+
+// 필터함수를 만들어본 것
+function myfilter(origin, callback){
+    var result = [];
+    for(var i=0; i<origin.length; i++){
+        var current = origin[i];
+        if(callback(current)){
+            result.push(current);
+        }
+    }
+    return result;
+}
+newWords = myfilter(words, element=>element.length > 6);
+</script>
