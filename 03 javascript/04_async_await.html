@@ -1,0 +1,75 @@
+<script>
+function timer(time){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve(time);
+        }, time);
+    });
+}
+
+
+// 콜백함수
+// timer(1000, function(){
+//     console.log('작업');
+//     timer(1000, function(){
+//         console.log('작업');
+//         timer(1000, function(){
+//             console.log('작업');
+//         })
+//     });
+// })
+
+// promise 사용
+// console.log('start');
+// timer(1000)
+// .then(function(time){
+//     console.log('time', time);
+//     return timer(time+1000);
+// })
+// .then(function(time){
+//     console.log('time', time);
+//     return timer(time+1000);
+// })
+// .then( function(time){
+//     console.log('time', time);
+//     console.log('end');
+// });
+
+
+// async await
+// 1) promise를 리턴하는 비동기 함수 앞에 await 키워드 추가
+// 2) await 키워드가 붙은 함수는 async 키워드가 붙은 함수 안에서 실행되어야 한다.
+// 3) async 키워드가 붙은 함수는 promise를 리턴한다. 그러므로 그 앞에 await를 또 붙일 수 있음
+// 4) async: await가 promise를 리턴하는 비동기 코드를 호출할 수 있게 해주는 함수. 그러므로 그 안에서 await를 사용할 수 있는 것
+
+async function run(){
+    console.log('start');
+    var time = await timer(1000);
+    console.log('time', time);
+    
+    time = await timer(time + 1000);
+    console.log('time', time);
+
+    time = await timer(time + 1000);
+    console.log('time', time);
+    console.log('end');
+
+    return time;
+}
+
+async function run2(){
+    console.log('parent start');
+    var time = await run();
+    console.log('time', time);
+    console.log('parent end');
+}
+
+console.log('parent parent start');
+run2().then(function(){
+    console.log('parent parent end');
+});
+
+
+
+
+</script>
