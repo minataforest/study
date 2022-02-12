@@ -1,0 +1,44 @@
+<script>
+    function job1(){
+        return new Promise(function(resolve,reject){
+            setTimeout(function(){
+                resolve('job1 ok!');
+                reject('fail job1');
+            }, 2000);
+        });
+    }
+
+    function job2 (){
+        return new Promise(function(resolve,reject){
+            setTimeout(function(){
+                resolve('job2 ok!');
+            }, 2000);
+        });
+    }
+
+    // nesting 방식
+    job1().then(function(data){
+        console.log('data1', data);
+        job2().then(function(data){
+            console.log('data2', data)
+        })
+    })
+
+
+    // chaining 방식
+    job1()
+    .then(function(data){
+        console.log('data1', data);
+        return job2();
+    })
+    .catch(function(reason){
+        console.log('reason', reason);
+        // reject를 리턴해주지 않으면, 이 뒤의 job2가 실행된다.
+        // 오류 발생 후 다른 작업을 멈추고 싶으면 reject를 리턴해주면 된다.
+        return Promise.reject(reason);
+    })
+    .then(function(data){
+        console.log('data2', data)
+    });
+
+</script>
