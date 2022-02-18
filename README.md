@@ -11,6 +11,6 @@ https://www.youtube.com/watch?v=yjuwpf7VH74
 ### 03. javascript 
 #### 생활코딩 자바스크립트
 
-### 04. Rust
+### 04. Rust~
 #### 러스트 공식 입문서(번역)
 https://rinthel.github.io/rust-lang-book-ko/foreword.html
