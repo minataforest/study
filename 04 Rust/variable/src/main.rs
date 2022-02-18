@@ -1,14 +1,28 @@
-fn main() {
-    println!("Hello, world!");
-    // another_functions(5, 6); // 5: 전달인자
-    let x = plus_one(5);
+fn main(){
+    let condition = true;
+    let number = if condition {
+        5
+    } else {
+        "six"
+    }
 
-    println!("x: {}", x);
+    println!("The value of number is: {}", number)
+
 }
 
-fn plus_one(x: i32) -> i32 {
-    x + 1
-}
+
+// =============================== 변수, 힘수 =======================
+// fn main() {
+//     println!("Hello, world!");
+//     // another_functions(5, 6); // 5: 전달인자
+//     let x = plus_one(5);
+
+//     println!("x: {}", x);
+// }
+
+// fn plus_one(x: i32) -> i32 {
+//     x + 1
+// }
 
 // fn another_functions(x: i32, y: i32){ // X: 매개변수. 매개변수에는 반드시 타입을 정의해야 한다.
 //     println!("The value of x is: {}", x);
