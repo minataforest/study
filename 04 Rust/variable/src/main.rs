@@ -1,14 +1,138 @@
-fn main(){
-    let condition = true;
-    let number = if condition {
-        5
-    } else {
-        "six"
+use std::io;
+
+fn main(){    
+    loop {
+        println!("
+            1. 섭씨, 화씨 변경
+            2. 피보나치 수열
+            3. 크리스마스 캐롤
+            4. 그만하기
+        ");
+        println!("원하는 숫자를 입력하세요.");
+    
+        let mut number = String::new();
+    
+        io::stdin().read_line(&mut number)
+            .expect("Failed to read line");
+        
+        let number: u32 = number.trim().parse()
+            .expect("Fail to int");
+
+        if number == 1 {
+            temp();
+        } else if number == 2 {
+            fivo();
+        } else if number == 3 {
+            carol();
+        } else if number == 4 {
+            println!("bye~");
+            break;
+        } else {
+            println!("잘못 입력했습니다.");
+        }
     }
-
-    println!("The value of number is: {}", number)
-
 }
+
+// 섭씨를 화씨로 바꾸기
+fn temp(){
+    let mut typ = String::new();
+    let mut org_temper = String::new();
+    let mut new_temper: f64 = 0.0;
+    
+    println!("
+    1. 섭씨 -> 화씨
+    2. 화씨 -> 섭씨
+    3. 그만하기
+    ");
+    
+    io::stdin().read_line(&mut typ).expect("Fail to read line");
+    
+    println!("온도를 입력하세요.");
+    io::stdin().read_line(&mut org_temper).expect("Fail to read line");
+    
+    let org_temper: f64 = org_temper.trim().parse().expect("Fail to float");
+
+    if typ.trim() == "1" {
+        new_temper = (org_temper * 9.0/5.0) + 32.0;
+        println!("섭씨 {}는 화씨 {}입니다.", org_temper, new_temper);
+    } else if typ.trim() == "2" {
+        new_temper = (org_temper -32.0) * 5.0/9.0;
+        println!("화씨 {}는 섭씨 {}입니다.", org_temper, new_temper);
+    } else {
+        println!("잘못 입력했습니다.");
+    }
+}
+
+// n번째 피보나치 수열 생성.
+fn fivo(){
+    println!("피보");
+}
+// 크리스마스 캐롤 “The Twelve Days of Christmas”의 가사를 반복문을 활용해 출력.
+fn carol(){ 
+    let years = ["first", "second", "third", "fourth", "fifth", "six"];
+    let texts = ["", "Two turtle-doves", "Three French hens", "Four calling birds", "Five golden rings (five golden rings)", "Six geese a laying"];
+    let mut text = String::new();
+
+    for index in 0..6 {
+        println!("On the {} day of Christmas", years[index]);
+        println!("My true love sent to me");
+        if index > 0 {
+            text = texts[index].to_owned() + "\n" + &text;
+            println!("{}", text);
+        } 
+        println!("A partridge in a pear tree\n");
+    }
+    
+}
+
+
+// ==============반복문===============
+// fn main(){
+//     let a = [10, 20, 30, 40, 50];
+
+//     for element in a.iter() {
+//         println!("the value is {}", element);
+//     }
+
+//     for number in (1..4).rev(){
+//         println!("{}", number);
+//     }
+
+//     println!("LIFTOFF!!!");
+// }
+
+// fn main(){
+//     let mut number = 3;
+
+//     while number != 0 {
+//         println!("{}!", number);
+
+//         number -= 1;
+//     }
+
+//     println!("LIFTOFF!!!");
+// }
+
+// fn main(){
+//     loop {
+//         println!("again!");
+//         break;
+//     }
+// }
+
+
+// ============== 조건문 ================
+// fn main(){
+//     let condition = true;
+//     let number = if condition {
+//         5
+//     } else {
+//         "six"
+//     }
+
+//     println!("The value of number is: {}", number)
+
+// }
 
 
 // =============================== 변수, 힘수 =======================
