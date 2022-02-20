@@ -1,6 +1,8 @@
-read -p "enter the commit message: " CMSG
-git config --global core.autocrlf true
+#!/bin/zsh
+
+echo "please enter the message"
+read CMSG
+date=`date "+%y%m%d"`
 git add .
-git commit -m "${CMSG}"
+git commit -m "${date} ${CMSG}"
 git push origin main
-echo "success push"
