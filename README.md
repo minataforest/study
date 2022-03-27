@@ -24,4 +24,4 @@ https://rinthel.github.io/rust-lang-book-ko/foreword.html
 
 ### 05. 가상면접사례로 배우는 대규모 시스템 설계 기초
 
-220326 1장
+220326 1장 / 220327 1장
