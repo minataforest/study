@@ -33,3 +33,5 @@ https://rinthel.github.io/rust-lang-book-ko/foreword.html
 ### 07. 1일1로그 100일 완성 IT 지식
 
 220423 18/19장, 220424 20장, 220428-220509 21-23장,
+
+### 08. 테스트
