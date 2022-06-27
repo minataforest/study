@@ -38,3 +38,7 @@ https://rinthel.github.io/rust-lang-book-ko/foreword.html
 
 https://nomadcoders.co/graphql-for-beginners  
 220526 ~ 220528
+
+### 09. 프로그래머의 뇌
+
+220627 CHAPTER01
