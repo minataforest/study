@@ -42,4 +42,5 @@ https://nomadcoders.co/graphql-for-beginners
 ### 09. 프로그래머의 뇌
 
 220627 CHAPTER01  
-220628 ~ 220629 CHAPTER02
+220628 ~ 220629 CHAPTER02  
+220703 CHAPTER03
