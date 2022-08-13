@@ -40,7 +40,8 @@ int main(void){
         }
 
         // 총 경과시간
-        totalElapsedTime = (clock() - startTime) / CLOCKS_PER_SEC; //초 단위로 변환
+        // totalElapsedTime = (clock() - startTime) / CLOCKS_PER_SEC; //초 단위로 변환
+        totalElapsedTime = (clock() - startTime) / 100; //CLOCKS_PER_SEC은 단위가 너무 커서 계속 총 시간이 0이 되므로 임의로 시간을 줄임
         printf("총 경과시간: %ld초\n", totalElapsedTime);
 
         // 직전에 물을 준 시간(마지막으로 물을 준 후로 흐른 시간)
@@ -64,7 +65,7 @@ int main(void){
         //레벨업 여부 확인(레벨업은 20초마다 수행)
         if(totalElapsedTime / 20 > level -1){
             level++;
-            printf("레벨 %d에서 레벨 %d로 레벨업\n", level-1, level);
+            printf("*********레벨 %d에서 레벨 %d로 레벨업*********\n", level-1, level);
 
             if(level ==5){
                 printf("\n최종레벨에 도달. 게임 클리어");
@@ -75,6 +76,7 @@ int main(void){
         //모든 물고기가 죽었는지 확인
         if(checkFishAlive() ==0){
             printf("물고기가 모두 죽었습니다\n");
+            printf("게임오버 레벨: %d\n", level);
             exit(0);
         } else{
             printf("물고기가 아직 살아있습니다\n");
@@ -105,9 +107,9 @@ void printfFishes(){
 
 void decreaseWater(long elapseTime){
     for(int i=0; i<6;i++){
-        arrFish[i] -= (level * 3 * (int)elapseTime); //3은 난이도 조절을 위한 값
-        if(arrFish[i] < 0 ){
-            arrFish[i] = 0;
+        cursor[i] -= (level * 3 * (int)elapseTime); //3은 난이도 조절을 위한 값
+        if(cursor[i] < 0 ){
+            cursor[i] = 0;
         }
     }
 }
